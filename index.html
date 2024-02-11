@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>David Lam Quizlet 101</title>
+    <style>
+      html {
+        cursor: url(https://cur.cursors-4u.net/symbols/sym-1/sym49.cur), auto;
+        background-image: url('https://raw.githubusercontent.com/dw2lam/1/main/meow.jpeg');
+        background-size: cover;
+        transition: background-color 0.5s;
+      }
+      
+      body {
+          font-family: Arial, sans-serif;
+          text-align: center;
+      }
+      h1 {
+          color: #F00;
+          font-size: 60px;
+          transition: font-size 0.5s;
+      }
+      .container {
+          padding: 15px 30px;
+          margin: 0 auto;
+          max-width: auto;
+      }
+      button {
+          padding: 15px 100px;
+          font-size: 60px;
+          margin: 20px 10px;
+          cursor: pointer;
+          border: none;
+          background-color: #F00;
+          color: #FFF;
+          border-radius: 8px;
+          outline: none;
+          transition: font-size 0.5s, padding 0.5s;
+      }
+      button:hover {
+          background-color: #D00;
+          cursor: url(https://cur.cursors-4u.net/symbols/sym-1/sym49.cur), auto;
+      }
+      #response {
+          font-size: 60px;
+          transition: font-size 0.5s;
+          color: #FFF;
+      }
+      #urlButton {
+          background-color: #008CBA;
+      }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Will you be my Valentine?</h1>
+        <button onclick="answerYes()">Yes</button>
+        <button onclick="answerNo()">No</button>
+        <p id="response"></p>        
+        <div id="urlDiv"></div>
+    </div>
+
+    <script>
+        var prompts = [
+            "Great! that better have been the answer",
+            "That's awesome! Imagine saying No, HAHA",
+            "Yes! You chose the correct answer smart girl.",
+            "Damn you really do luv me huh?",
+            "Manzo still sending me big brazilian woman...",
+            "WTM",
+            "I love you, Maya Mahmood 04",
+            "one of your gifts, will arrive in this font",
+            "this website will explode"
+        ];
+
+        var currentPromptIndex = 0;
+
+        function answerYes() {
+            var responseElement = document.getElementById("response");
+            var currentFontSize = window.getComputedStyle(responseElement, null).getPropertyValue('font-size');
+            var newFontSize = parseFloat(currentFontSize) + 5;
+            responseElement.style.fontSize = newFontSize + "px";
+            document.querySelector("h1").style.fontSize = (parseInt(document.querySelector("h1").style.fontSize) + 5) + "px";
+            responseElement.innerText = prompts[currentPromptIndex];
+            currentPromptIndex = (currentPromptIndex + 1) % prompts.length;
+            var buttons = document.querySelectorAll("button");
+            for (var i = 0; i < buttons.length; i++) {
+                buttons[i].style.fontSize = (parseInt(buttons[i].style.fontSize) + 2) + "px";
+                buttons[i].style.padding = (parseInt(buttons[i].style.padding) + 5) + "px " + (parseInt(buttons[i].style.padding) + 10) + "px";
+            }
+        }
+
+        function answerNo() {
+            document.getElementById("response").innerText = "";
+            var urlDiv = document.getElementById("urlDiv");
+            urlDiv.innerHTML = '<a id="urlButton" href="https://www.youtube.com/watch?v=LDWJn3IwiaM" target="_blank">Learn why you dont press <u><i>no<i><u> here.</a>';
+        }
+    </script>
+</body>
+</html>
